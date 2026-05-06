@@ -1,8 +1,11 @@
-# Front-end
+# Site
 node_modules/
 .vscode/
 
-# Backend
+# Server
 venv/
 __pycache__/
 *.pyc
+
+# Main
+.env

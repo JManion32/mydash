@@ -1,7 +1,7 @@
-# My Dashboard
-All-in-one personal command center to maximize productivity.
+# MyDash
+Comprehensive personal command center to maximize productivity.
 ```bash
-git clone git@github.com:JManion32/my-dash.git
+git clone git@github.com:JManion32/mydash.git
 ```
 
 ## Backend
@@ -20,9 +20,12 @@ source venv/bin/activate
 ```bash
 uvicorn app.main:app --reload
 ```
-Once running, check here:
+Local Server Address:
 ```
 http://127.0.0.1:8000
+```
+Local Server Docs:
+```
 http://127.0.0.1:8000/docs
 ```
 ### Docker
