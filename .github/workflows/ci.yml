@@ -156,6 +156,7 @@ jobs:
                   username: root
                   key: ${{ secrets.DROPLET_SSH_KEY }}
                   script: |
+                      mkdir -p ~/prod
                       cd ~/prod
                       docker compose -f compose.prod.yml pull
                       docker compose -f compose.prod.yml up -d
