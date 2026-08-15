@@ -11,20 +11,18 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql
 
-  server:
-    build: ./server
+  backend:
+    build: ./backend
     ports:
       - "127.0.0.1:8000:8000"
     volumes:
-      - ./server:/app
+      - ./backend:/app
     restart: always
 
   site:
     build: ./site
     ports:
-      - "5173:5173"
-    volumes:
-      - ./site:/app
+      - "8080:80"
 
 volumes:
   pgdata:

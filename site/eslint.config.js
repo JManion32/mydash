@@ -23,5 +23,9 @@ export default [
       '@typescript-eslint/no-unused-vars': 'warn',
       'vue/multi-word-component-names': 'off'
     }
+  },
+
+  {
+    ignores: ["dist/", "build/", "node_modules/", "coverage/", "*.config.js"]
   }
 ]

@@ -96,7 +96,7 @@ jobs:
           uses: docker/setup-buildx-action@v3
 
         - name: Build images
-          run: docker compose -f compose.yml build
+          run: docker compose -f compose.dev.yml build
 
 
     docker-publish:
@@ -135,10 +135,10 @@ jobs:
             - name: Build and push api
               uses: docker/build-push-action@v5
               with:
-                  context: ./server
-                  file: ./server/Dockerfile
+                  context: ./backend
+                  file: ./backend/Dockerfile
                   push: true
-                  tags: ghcr.io/jmanion32/mydash-server:latest
+                  tags: ghcr.io/jmanion32/mydash-backend:latest
 
 
     deploy:
@@ -149,6 +149,26 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Ensure prod directory exists
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.DROPLET_IP }}
+                  username: root
+                  key: ${{ secrets.DROPLET_SSH_KEY }}
+                  script: mkdir -p ~/prod
+
+            - name: Copy prod config to droplet
+              uses: appleboy/scp-action@v1
+              with:
+                  host: ${{ secrets.DROPLET_IP }}
+                  username: root
+                  key: ${{ secrets.DROPLET_SSH_KEY }}
+                  source: 'compose.prod.yml,nginx.prod.conf'
+                  target: ~/prod
+
             - name: Deploy to droplet
               uses: appleboy/ssh-action@v1
               with:
@@ -156,7 +176,6 @@ jobs:
                   username: root
                   key: ${{ secrets.DROPLET_SSH_KEY }}
                   script: |
-                      mkdir -p ~/prod
                       cd ~/prod
                       docker compose -f compose.prod.yml pull
                       docker compose -f compose.prod.yml up -d
