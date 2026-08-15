@@ -1,7 +1,7 @@
 services:
 
-  mydash-db:
-    image: postgres:latest
+  db:
+    image: postgres:18
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASS}
@@ -11,22 +11,20 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql
 
-  mydash-server:
+  server:
     build: ./server
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ./server:/app
     restart: always
 
-  mydash-site:
+  site:
     build: ./site
     ports:
       - "5173:5173"
     volumes:
       - ./site:/app
-    depends_on:
-      - mydash-server
 
 volumes:
   pgdata:
