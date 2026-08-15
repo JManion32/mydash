@@ -150,7 +150,7 @@ jobs:
     docker-publish:
         name: Publish Docker Image
         runs-on: ubuntu-latest
-        needs: [stylelint, prettier, eslint, docker-build]
+        needs: [stylelint, prettier, eslint, ruff, pytest, docker-build]
 
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
