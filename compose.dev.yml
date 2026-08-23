@@ -1,5 +1,28 @@
 services:
 
+  site:
+    build:
+      context: ./site
+      args:
+        NGINX_ENV: dev
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./backend:/app
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+
   db:
     image: postgres:18
     environment:
@@ -10,19 +33,11 @@ services:
       - '127.0.0.1:5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql
-
-  backend:
-    build: ./backend
-    ports:
-      - "127.0.0.1:8000:8000"
-    volumes:
-      - ./backend:/app
-    restart: always
-
-  site:
-    build: ./site
-    ports:
-      - "8080:80"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
 volumes:
   pgdata:
