@@ -1,0 +1,21 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "MyDash API"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "sqlalchemy>=2.0.52",
+    "uvicorn>=0.52.4",
+]
+
+# This is a deployed application, not a distributable package: uv manages the
+# environment and lockfile but does not build/install the project itself.
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.4",
+]
