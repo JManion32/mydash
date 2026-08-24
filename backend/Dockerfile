@@ -1,4 +1,4 @@
-FROM python:3.12-slim AS builder
+FROM python:3.14-slim AS builder
 
 COPY --from=ghcr.io/astral-sh/uv:0.12.5 /uv /bin/
 
@@ -16,7 +16,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-dev
 
 # Runtime image
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 COPY --from=builder /opt/venv /opt/venv
 
