@@ -1,0 +1,11 @@
+/* CSS */
+:root {
+    /* Standard */
+    --standard-white: #fff;
+    --standard-black: #000;
+
+    /* Theme */
+    --ultra-blue: #07f;
+    --muted-blue: #1e1e34;
+    --ultra-blue-hover: color-mix(in srgb, var(--ultra-blue) 20%, transparent);
+}

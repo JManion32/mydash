@@ -1,0 +1,7 @@
+/* Non-color, non-responsive design tokens. */
+:root {
+    --site-font: 'Inter Variable', sans-serif;
+    --site-transition-time: 0.25s;
+    --site-transition: all var(--site-transition-time) ease;
+    --page-border-radius: 1.25rem;
+}

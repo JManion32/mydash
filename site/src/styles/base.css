@@ -1,0 +1,65 @@
+/* Element defaults and resets. No classes here; tokens live in theme/colors/scaling. */
+html,
+body,
+#app {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--standard-black);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: var(--site-font);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    /* scrollbar-gutter: stable both-edges; */
+    font-size: var(--site-font-size);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+/* Site-wide keyboard focus ring. :focus-visible skips mouse/touch focus. */
+:focus-visible {
+    outline: 2px solid var(--outline-gray);
+}
