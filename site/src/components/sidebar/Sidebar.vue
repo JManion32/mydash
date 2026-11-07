@@ -7,16 +7,34 @@ const route = useRoute();
 </script>
 
 <template>
-    <div v-if="route.path !== '/'" class="sidebar-container">
+    <div
+        v-if="route.path !== '/'"
+        class="sidebar-container"
+    >
         <h2 class="sidebar-header">MyDash Sidebar</h2>
         <hr class="sidebar-separator" />
         <div class="sidebar-entries-container">
             <span class="sidebar-group" />AuthPage
-            <SidebarEntry title="Home" route="home" />
-            <SidebarEntry title="Journal" route="journal" />
-            <SidebarEntry title="Tasks" route="tasks" />
-            <SidebarEntry title="Goals" route="goals" />
-            <SidebarEntry title="Calendar" route="calendar" />
+            <SidebarEntry
+                title="Home"
+                route="home"
+            />
+            <SidebarEntry
+                title="Journal"
+                route="journal"
+            />
+            <SidebarEntry
+                title="Tasks"
+                route="tasks"
+            />
+            <SidebarEntry
+                title="Goals"
+                route="goals"
+            />
+            <SidebarEntry
+                title="Calendar"
+                route="calendar"
+            />
         </div>
         <SettingsModal />
     </div>

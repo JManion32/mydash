@@ -7,8 +7,17 @@ import Modal from '../Modal.vue';
 const visible = ref(false);
 </script>
 <template>
-    <button class="sidebar-bottom-container" @click="visible = true">Settings</button>
-    <Modal :visible="visible" transition="fade" @close="visible = false">
+    <button
+        class="sidebar-bottom-container"
+        @click="visible = true"
+    >
+        Settings
+    </button>
+    <Modal
+        :visible="visible"
+        transition="fade"
+        @close="visible = false"
+    >
         <div class="modal-content">
             <h2>Settings</h2>
         </div>

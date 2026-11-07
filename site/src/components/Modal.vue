@@ -49,10 +49,18 @@ onUnmounted(() => {
 <template>
     <Teleport to="body">
         <Transition :name="transition">
-            <div v-if="visible" class="modal-backdrop" @click.self="emitClose()">
+            <div
+                v-if="visible"
+                class="modal-backdrop"
+                @click.self="emitClose()"
+            >
                 <div class="modal-container">
                     <div class="modal-close-container">
-                        <button v-if="!props.required" class="modal-close-btn" @click.self="emitClose()">
+                        <button
+                            v-if="!props.required"
+                            class="modal-close-btn"
+                            @click.self="emitClose()"
+                        >
                             &times;
                         </button>
                     </div>

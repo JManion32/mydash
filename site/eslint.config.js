@@ -3,12 +3,13 @@ import globals from 'globals';
 import pluginVue from 'eslint-plugin-vue';
 import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
     globalIgnores(['dist']),
     {
         files: ['**/*.{ts,tsx,vue}'],
-        extends: [js.configs.recommended, tseslint.configs.recommended, pluginVue.configs['flat/recommended']],
+        extends: [js.configs.recommended, tseslint.configs.recommended, pluginVue.configs['flat/recommended'], eslintConfigPrettier],
         languageOptions: {
             ecmaVersion: 2020,
             globals: globals.browser,

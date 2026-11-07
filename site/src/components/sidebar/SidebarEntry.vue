@@ -6,7 +6,10 @@ const props = defineProps<{
 </script>
 
 <template>
-    <RouterLink class="sidebar-entry-container" :to="props.route">
+    <RouterLink
+        class="sidebar-entry-container"
+        :to="props.route"
+    >
         {{ props.title }}
     </RouterLink>
 </template>
